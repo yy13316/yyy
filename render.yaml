@@ -1,0 +1,17 @@
+services:
+  - type: web
+    name: quant-tianji-api
+    runtime: node
+    plan: free
+    buildCommand: npm install && npm run build
+    startCommand: npm start
+    envVars:
+      - key: PORT
+        value: 3001
+      - key: NODE_ENV
+        value: production
+      - key: CORS_ORIGIN
+        value: '*'
+      - key: POLL_INTERVAL_MS
+        value: 5000
+    healthCheckPath: /api/health
